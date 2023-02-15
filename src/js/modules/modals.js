@@ -62,7 +62,6 @@ export const modals = () => {
     modal.addEventListener('click', (e) => {
       if (e.target === modal && closeClickOverlay) {
         closeModal();
-        closeWindows();
       }
     })
   }
