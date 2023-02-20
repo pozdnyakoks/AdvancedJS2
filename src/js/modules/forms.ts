@@ -45,11 +45,12 @@ export const forms = () => {
   uploads.forEach((upload) => {
     upload.addEventListener('input', (ev) => {
       const target = ev.target as HTMLInputElement;
-      const files = <FileList>target.files;
-      let dots;
-      const arr = files[0].name.split('.');
-      arr[0].length > 6 ? (dots = '...') : (dots = '.');
-      const name = arr[0].substring(0, 6) + dots + arr[1];
+
+      const file = (<FileList>target.files)[0];
+      const [fileName, fileExt] = file.name.split('.');
+      const dots = fileName.length > 6 ? '...' : '.';
+      const name = `${fileName.substring(0, 6)} ${dots} ${fileExt}`;
+
       (<HTMLElement>upload.previousElementSibling).textContent = name;
     });
   });
