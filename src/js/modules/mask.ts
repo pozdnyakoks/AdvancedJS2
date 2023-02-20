@@ -17,15 +17,18 @@ export const mask = (selector: string) => {
     const el = event.target as HTMLInputElement;
     const matrix = '+7 (___) ___ __ __';
     let i = 0;
-    const def = matrix.replace(/\D/g, '');
-    let val = el.value.replace(/\D/g, '');
+    const regNotANumber = /\D/g;
+    const def = matrix.replace(regNotANumber, '');
+    let val = el.value.replace(regNotANumber, '');
 
     if (def.length >= val.length) {
       val = def;
     }
 
-    el.value = matrix.replace(/./g, (a) => {
-      return /[_\d]/.test(a) && i < val.length
+    const regAny = /./g;
+    el.value = matrix.replace(regAny, (a) => {
+      const regSym = /[_\d]/;
+      return regSym.test(a) && i < val.length
         ? val.charAt(i++)
         : i >= val.length
         ? ''
