@@ -4,6 +4,7 @@ import {
   forms,
   mask,
   checkTextInputs,
+  showMoreStyles,
 } from './modules/modules';
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -24,4 +25,5 @@ window.addEventListener('DOMContentLoaded', () => {
   mask('[name="phone"]');
   checkTextInputs('[name="name"]');
   checkTextInputs('[name="message]"');
+  showMoreStyles('.button-styles', '#styles .row');
 });
