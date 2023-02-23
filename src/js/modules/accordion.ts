@@ -12,7 +12,7 @@ export const accordion = (triggerSelector: string) => {
       const sibling = btn.nextElementSibling as HTMLDivElement;
       btn.classList.toggle('active-style');
       sibling.classList.toggle('active-content');
-      sibling.style.maxHeight = sibling.scrollHeight + 80 + 'px';
+      sibling.style.maxHeight = `${sibling.scrollHeight + 80}px`;
     });
   });
 };
