@@ -68,8 +68,8 @@ export const forms = () => {
       const textMessage = document.createElement('div');
       textMessage.textContent = message.loading;
       statusMessage.appendChild(textMessage);
-
       const formData = new FormData(form);
+
       const api =
         form.closest('.popup-design') || form.classList.contains('calc_form')
           ? path.designer
