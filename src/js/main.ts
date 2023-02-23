@@ -7,6 +7,7 @@ import {
   showMoreStyles,
   calc,
   filter,
+  pictureSize,
 } from './modules';
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -38,4 +39,6 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   filter();
+
+  pictureSize('.sizes-block');
 });
