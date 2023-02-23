@@ -60,11 +60,7 @@ export const filter = () => {
   const marks = [markAll, markLovers, markChef, markGirl, markGuy];
   btnsArray.forEach((btn, index) => {
     btn.addEventListener('click', () => {
-      if (marks[index]) {
-        typeFilter(marks[index]);
-      } else {
-        typeFilter();
-      }
+      typeFilter(marks[index]);
     });
   });
 
