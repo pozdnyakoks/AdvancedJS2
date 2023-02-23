@@ -21,7 +21,8 @@ export const calc = ({
 
   const calcFunc = () => {
     sum = Math.round(
-      +sizeBlock.value * +materialBlock.value + +optionsBlock.value
+      Number(sizeBlock.value) * Number(materialBlock.value) +
+        Number(optionsBlock.value)
     );
 
     if (sizeBlock.value == '' || materialBlock.value == '') {
