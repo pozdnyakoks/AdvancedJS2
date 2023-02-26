@@ -1,5 +1,7 @@
 export const drop = () => {
-  const fileInputs = document.querySelectorAll('[name="upload"]');
+  const fileInputs = document.querySelectorAll(
+    '[name="upload"]'
+  ) as NodeListOf<HTMLInputElement>;
 
   const preventDefaults = (ev: Event) => {
     ev.preventDefault();
@@ -48,8 +50,7 @@ export const drop = () => {
       const name = `${fileName.substring(0, 6)} ${dots} ${fileExt}`;
 
       (<HTMLElement>input.previousElementSibling).textContent = name;
-      //непонятно
-      files = (<DragEvent>ev).dataTransfer.files;
+      files = (<DataTransfer>(<DragEvent>ev).dataTransfer).files;
     });
   });
 };
