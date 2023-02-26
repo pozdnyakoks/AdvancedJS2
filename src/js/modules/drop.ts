@@ -22,11 +22,9 @@ export const drop = () => {
   const unHighlight = (item: HTMLInputElement) => {
     const closest = item.closest('.file_upload') as HTMLDivElement;
     closest.style.border = 'none';
-    if (item.closest('.calc_form')) {
-      closest.style.backgroundColor = '#fff';
-    } else {
-      closest.style.backgroundColor = '#ededed';
-    }
+    closest.style.backgroundColor = item.closest('.calc_form')
+      ? '#fff'
+      : (closest.style.backgroundColor = '#ededed');
   };
 
   ['dragenter', 'dragover'].forEach((eventName) => {
