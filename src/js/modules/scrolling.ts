@@ -1,5 +1,6 @@
 export const scrolling = (upSelector: string) => {
   const upElem = document.querySelector(upSelector) as HTMLAnchorElement;
+
   const SCROLL_UP = 1650;
   window.addEventListener('scroll', () => {
     if (document.documentElement.scrollTop > SCROLL_UP) {
@@ -11,47 +12,60 @@ export const scrolling = (upSelector: string) => {
     }
   });
 
-  // scrolling with raf
-
   const links = document.querySelectorAll(
     '[href^="#"]'
   ) as NodeListOf<HTMLAnchorElement>;
-  const speed = 0.3;
-
   links.forEach((link) => {
-    link.addEventListener('click', (ev) => {
-      ev.preventDefault();
-
-      const widthTop = document.documentElement.scrollTop;
+    link.addEventListener('click', () => {
       const hash = link.hash;
-      const toBlock = (<HTMLDivElement>(
-        document.querySelector(hash)
-      )).getBoundingClientRect().top;
-      let start: null | number = null;
 
-      const step = (time: number) => {
-        if (!start) {
-          start = time;
-        }
+      const el = document.querySelector(hash) as HTMLDivElement;
 
-        const progress = time - start;
-        const scrollToY =
-          toBlock < 0
-            ? Math.max(widthTop - progress / speed, widthTop + toBlock)
-            : Math.min(widthTop + progress / speed, widthTop + toBlock);
-
-        document.documentElement.scrollTo(0, scrollToY);
-
-        if (scrollToY != widthTop + toBlock) {
-          requestAnimationFrame(step);
-        } else {
-          location.hash = hash;
-        }
-      };
-
-      requestAnimationFrame(step);
+      el.scrollIntoView({ behavior: 'smooth' });
     });
   });
+
+  // // scrolling with raf
+
+  // const links = document.querySelectorAll(
+  //   '[href^="#"]'
+  // ) as NodeListOf<HTMLAnchorElement>;
+  // const speed = 0.3;
+
+  // links.forEach((link) => {
+  //   link.addEventListener('click', (ev) => {
+  //     ev.preventDefault();
+
+  //     const widthTop = document.documentElement.scrollTop;
+  //     const hash = link.hash;
+  //     const toBlock = (<HTMLDivElement>(
+  //       document.querySelector(hash)
+  //     )).getBoundingClientRect().top;
+  //     let start: null | number = null;
+
+  //     const step = (time: number) => {
+  //       if (!start) {
+  //         start = time;
+  //       }
+
+  //       const progress = time - start;
+  //       const scrollToY =
+  //         toBlock < 0
+  //           ? Math.max(widthTop - progress / speed, widthTop + toBlock)
+  //           : Math.min(widthTop + progress / speed, widthTop + toBlock);
+
+  //       document.documentElement.scrollTo(0, scrollToY);
+
+  //       if (scrollToY != widthTop + toBlock) {
+  //         requestAnimationFrame(step);
+  //       } else {
+  //         location.hash = hash;
+  //       }
+  //     };
+
+  //     requestAnimationFrame(step);
+  //   });
+  // });
 
   //pure JS
   // const element = document.documentElement;
